@@ -1,0 +1,9 @@
+
+namespace  com.orbitalhq.aws.sqs {
+   annotation SqsService {
+      connectionName : ConnectionName inherits String
+   }
+   annotation SqsOperation {
+      queue : QueueName inherits String
+   }
+}

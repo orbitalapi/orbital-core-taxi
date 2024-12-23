@@ -1,0 +1,33 @@
+
+namespace  com.orbitalhq.kafka {
+   annotation KafkaService {
+      connectionName : ConnectionName inherits String
+   }
+   enum TopicOffset {
+      earliest,
+      latest,
+      none
+   }
+   annotation KafkaMessageKey {}
+
+   annotation KafkaMessageMetadata {
+      value : KafkaMetadataType
+   }
+   enum KafkaMetadataType {
+      Partition,
+      Offset,
+      Timestamp,
+      TimestampType,
+      Topic
+   }
+
+
+   annotation KafkaHeader {
+      value : String
+   }
+
+   annotation KafkaOperation {
+      topic : TopicName inherits String
+      offset : TopicOffset
+   }
+}

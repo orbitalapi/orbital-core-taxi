@@ -1,0 +1,10 @@
+namespace com.orbitalhq.state {
+
+   annotation StateStore {
+      connection : String?
+      [[ A name to use for the state store. Optional, one will be assigned if not provided ]]
+      name: String?
+      [[ If an entry is not accessed (read or write) for this duration, it is evicted from the state store ]]
+      maxIdleSeconds: Int = 180
+   }
+}

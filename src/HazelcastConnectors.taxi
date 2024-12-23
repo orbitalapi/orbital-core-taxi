@@ -1,0 +1,16 @@
+namespace com.orbitalhq.hazelcast {
+   annotation HazelcastService {
+      connectionName : String
+   }
+   annotation HazelcastMap {
+      name : HazelcastMapName inherits String
+   }
+   annotation UpsertOperation {}
+   annotation DeleteOperation {
+      mapName : String
+   }
+
+   annotation JsonObject
+   annotation CompactObject
+
+}

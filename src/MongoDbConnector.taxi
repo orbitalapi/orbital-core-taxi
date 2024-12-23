@@ -1,0 +1,23 @@
+
+namespace com.orbitalhq.mongo {
+   type ConnectionName inherits String
+   type BatchSize inherits Int
+   type BatchDuration inherits Int
+   annotation MongoService {
+      connection : ConnectionName
+   }
+   
+   annotation UpsertOperation {
+        batchSize: BatchSize?
+        batchDuration: BatchDuration?
+   }
+   annotation ObjectId {}
+   annotation UniqueIndex {}
+   annotation SetOnInsert {}
+  
+   annotation Collection {
+      connection : ConnectionName
+      collection : CollectionName inherits String
+   }
+}
+   

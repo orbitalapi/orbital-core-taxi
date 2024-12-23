@@ -1,0 +1,8 @@
+
+namespace  com.orbitalhq.http.operations {
+   type HttpStatusCode inherits String
+
+   annotation HttpIgnoreErrors {
+      responseCodes: HttpStatusCode[]
+   }
+}

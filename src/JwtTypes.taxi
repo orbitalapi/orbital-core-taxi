@@ -1,0 +1,5 @@
+namespace com.orbitalhq.auth {
+   model AuthClaims {
+
+   }
+}

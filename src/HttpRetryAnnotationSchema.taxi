@@ -1,0 +1,24 @@
+
+namespace  com.orbitalhq.http.operations {
+   type RetryTimeInSeconds inherits Int
+   type MaximumRetries inherits Int
+   type ExponentialBackOffJitter inherits Decimal
+   type ResponseCode inherits Int
+
+   annotation HttpFixedRetryPolicy {
+       maxRetries: MaximumRetries
+       retryDelay: RetryTimeInSeconds
+   }
+
+   annotation HttpExponentialRetryPolicy {
+       maxRetries: MaximumRetries
+       retryDelay: RetryTimeInSeconds
+       jitter: ExponentialBackOffJitter = 0.5
+   }
+
+   annotation HttpRetry {
+      fixedRetryPolicy: com.orbitalhq.http.operations.HttpFixedRetryPolicy?
+      exponentialRetryPolicy: com.orbitalhq.http.operations.HttpExponentialRetryPolicy?
+      responseCode: ResponseCode[]
+   }
+}

@@ -1,0 +1,10 @@
+namespace com.orbitalhq.aws.dynamo {
+    type ConnectionName inherits String
+    annotation DynamoService {
+    }
+
+    annotation Table {
+        connectionName : ConnectionName
+        tableName : TableName inherits String
+    }
+}

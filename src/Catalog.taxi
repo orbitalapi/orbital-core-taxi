@@ -1,0 +1,6 @@
+namespace com.orbitalhq.catalog {
+   annotation DataOwner {
+      id : com.orbitalhq.Username
+      name : String
+   }
+}

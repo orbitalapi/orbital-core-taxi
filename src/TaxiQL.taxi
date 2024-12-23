@@ -1,0 +1,1 @@
+namespace vyne.vyneQl { type VyneQlQuery inherits String }

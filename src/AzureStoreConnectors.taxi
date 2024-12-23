@@ -1,0 +1,12 @@
+
+namespace  com.orbitalhq.azure.store {
+   annotation BlobService {
+      connectionName : ConnectionName inherits String
+   }
+
+   annotation AzureStoreOperation {
+      container : AzureStoreContainer inherits String
+   }
+
+   type AzureStoreBlob inherits String
+}

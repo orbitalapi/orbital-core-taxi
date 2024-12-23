@@ -1,0 +1,11 @@
+namespace com.orbitalhq.errors {
+   type ErrorMessage inherits String
+
+   // Empty base type
+   model Error {}
+
+   @taxi.http.ResponseCode(401)
+   model NotAuthorizedError inherits Error {
+     message: ErrorMessage
+   }
+}

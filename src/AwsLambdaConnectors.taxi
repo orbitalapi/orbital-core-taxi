@@ -1,0 +1,11 @@
+
+namespace  com.orbitalhq.aws.lambda {
+   annotation AwsLambdaService {
+      connectionName : ConnectionName inherits String
+   }
+
+   annotation LambdaOperation {
+      name : OperationName inherits String
+   }
+
+}

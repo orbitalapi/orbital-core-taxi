@@ -1,0 +1,13 @@
+namespace com.orbitalhq.formats {
+
+   annotation Csv {
+      delimiter : String = ","
+      firstRecordAsHeader : Boolean = true
+      nullValue : String?
+      containsTrailingDelimiters : Boolean = false
+      useFieldNamesAsColumnNames: Boolean = true
+      quoteChar: String = '"'
+      recordSeparator: String = "\r\n"
+   }
+
+}

@@ -1,0 +1,48 @@
+
+         namespace taxi.http {
+            annotation HttpService {
+               baseUrl : String
+            }
+            enum HttpMethod {
+               GET,
+               POST,
+               PUT,
+               DELETE,
+               PATCH
+            }
+
+            annotation HttpOperation {
+               method : HttpMethod
+               url : String
+            }
+
+            annotation WebsocketOperation {
+               path : String
+            }
+
+
+            annotation HttpHeader {
+               name : String
+               [[ Pass a value when using as an annotation on an operation.
+               For parameters, it's valid to allow the value to be populated from the parameter. ]]
+               value : String?
+               prefix : String?
+               suffix : String?
+            }
+
+            annotation RequestBody {}
+            annotation PathVariable { value : String }
+
+            annotation ResponseBody{}
+
+            annotation ResponseCode {
+               value : Int
+            }
+            
+            annotation HttpQueryVariable { value: String }
+            
+            annotation HttpResponseHeader { value: String }
+         }
+           
+            
+      
