@@ -20,7 +20,6 @@
                path : String
             }
 
-
             annotation HttpHeader {
                name : String
                [[ Pass a value when using as an annotation on an operation.
@@ -33,16 +32,21 @@
             annotation RequestBody {}
             annotation PathVariable { value : String }
 
-            annotation ResponseBody{}
+            annotation ResponseBody {}
 
             annotation ResponseCode {
                value : Int
             }
-            
-            annotation HttpQueryVariable { value: String }
-            
-            annotation HttpResponseHeader { value: String }
+
+            annotation QueryVariable {
+               value: String
+            }
+
+            annotation ResponseHeader {
+               name: String
+               value: String?
+             }
          }
-           
-            
+
+
       
