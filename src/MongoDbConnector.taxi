@@ -6,7 +6,7 @@ namespace com.orbitalhq.mongo {
    annotation MongoService {
       connection : ConnectionName
    }
-   
+
    annotation UpsertOperation {
         batchSize: BatchSize?
         batchDuration: BatchDuration?
@@ -14,10 +14,17 @@ namespace com.orbitalhq.mongo {
    annotation ObjectId {}
    annotation UniqueIndex {}
    annotation SetOnInsert {}
-  
+
    annotation Collection {
       connection : ConnectionName
       collection : CollectionName inherits String
+   }
+
+   [[ Allows for defining a native Mongo query as an aggregate pipeline
+   ]]
+   annotation MongoAggregate {
+      collection: String
+      pipeline : String[]
    }
 }
    
