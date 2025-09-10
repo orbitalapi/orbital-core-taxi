@@ -40,7 +40,7 @@ namespace com.orbitalhq.mongo {
    [[ Defines a collection of aggregation pipelines, which execute
    within a single transaction
    ]]
-   annotation AggregateTransaction {
+   annotation MultiAggregation {
       pipelines: AggregationPipeline[]
 
       [[ Indicates if the entire pipeline should be wrapped in a transaction.
