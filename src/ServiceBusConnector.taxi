@@ -1,0 +1,31 @@
+
+namespace  com.orbitalhq.azure.servicebus {
+   annotation ServiceBusService {
+      connectionName : ConnectionName inherits String
+   }
+   
+   type BatchSize inherits Int
+   type BatchDuration inherits Int
+   type MaximumSizeInBytes inherits Int
+
+  type SubscriptionName inherits String
+  type TopicName inherits String
+  annotation ServiceBusTopicSubscriptionOperation {
+      topic : TopicName
+      subscription: SubscriptionName
+   }
+   
+   annotation ServiceBusTopicPublicationOperation {
+      topic : TopicName
+      batchSize: BatchSize?
+      batchDuration: BatchDuration?
+      maximumSizeInBytes: MaximumSizeInBytes?
+   }
+   
+  annotation ServiceBusQueueOperation {
+      queue : QueueName inherits String
+      batchSize: BatchSize?
+      batchDuration: BatchDuration?
+      maximumSizeInBytes: MaximumSizeInBytes?
+   }
+}
