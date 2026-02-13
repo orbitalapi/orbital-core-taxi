@@ -1,0 +1,34 @@
+namespace com.orbitalhq.scheduler
+
+annotation Scheduled {
+  /**
+   * Cron expression (Quartz format)
+   */
+  cron: String?
+
+  /**
+   * Run with fixed rate (ISO-8601 duration or shorthand like "10m")
+   */
+  fixedRate: String?
+
+  /**
+   * Max number of executions (-1 = forever)
+   */
+  repeatCount: Int = -1
+
+  /**
+   * What to do if a fire is missed
+   */
+  misfirePolicy: MisfirePolicy = MisfirePolicy.Default
+
+  /**
+   * Trigger priority (higher runs first)
+   */
+  priority: Int = 5
+}
+
+enum MisfirePolicy {
+  Default,
+  FireImmediately,
+  Skip
+}
