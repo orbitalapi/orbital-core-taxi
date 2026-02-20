@@ -1,9 +1,18 @@
 
 namespace com.orbitalhq.jdbc {
    type ConnectionName inherits String
-   annotation UpsertOperation {}
-   annotation InsertOperation {}
-   annotation UpdateOperation {}
+   annotation UpsertOperation {
+        batchSize: Int?
+        batchDuration: Int?
+   }
+   annotation InsertOperation {
+        batchSize: Int?
+        batchDuration: Int?
+   }
+   annotation UpdateOperation {
+        batchSize: Int?
+        batchDuration: Int?
+   }
    annotation DatabaseService {
       connection : ConnectionName
    }
