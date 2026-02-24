@@ -1,0 +1,13 @@
+namespace com.orbitalhq.caching {
+
+   enum CachePolicy {
+      Enabled,
+      Disabled
+   }
+   annotation Cache {
+      mode: CachePolicy = CachePolicy.Enabled
+      connection : String?
+      [[ If an entry is not accessed (read or write) for this duration, it is evicted from the cache ]]
+      maxIdleSeconds: Int = 180
+   }
+}
