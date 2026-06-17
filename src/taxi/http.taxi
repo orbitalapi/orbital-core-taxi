@@ -8,7 +8,9 @@
                POST,
                PUT,
                DELETE,
-               PATCH
+               PATCH,
+               OPTIONS,
+               HEAD
             }
 
             annotation HttpOperation {
@@ -19,7 +21,6 @@
             annotation WebsocketOperation {
                path : String
             }
-
 
             annotation HttpHeader {
                name : String
@@ -33,16 +34,21 @@
             annotation RequestBody {}
             annotation PathVariable { value : String }
 
-            annotation ResponseBody{}
+            annotation ResponseBody {}
 
             annotation ResponseCode {
                value : Int
             }
-            
-            annotation HttpQueryVariable { value: String }
-            
-            annotation HttpResponseHeader { value: String }
+
+            annotation QueryVariable {
+               value: String
+            }
+
+            annotation ResponseHeader {
+               name: String
+               value: String?
+             }
          }
-           
-            
+
+
       
