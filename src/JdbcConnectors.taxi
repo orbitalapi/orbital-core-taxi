@@ -1,6 +1,10 @@
 
 namespace com.orbitalhq.jdbc {
    type ConnectionName inherits String
+   type DeleteCount inherits Int
+   model DeleteResult {
+      deletedCount : DeleteCount
+   }
    annotation UpsertOperation {
         batchSize: Int?
         batchDuration: Int?
@@ -10,6 +14,10 @@ namespace com.orbitalhq.jdbc {
         batchDuration: Int?
    }
    annotation UpdateOperation {
+        batchSize: Int?
+        batchDuration: Int?
+   }
+   annotation DeleteOperation {
         batchSize: Int?
         batchDuration: Int?
    }
