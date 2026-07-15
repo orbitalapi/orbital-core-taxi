@@ -5,6 +5,13 @@ namespace com.orbitalhq.jdbc {
    model DeleteResult {
       deletedCount : DeleteCount
    }
+   type AffectedRowCount inherits Int
+   model UpdateResult {
+      affectedRows : AffectedRowCount
+   }
+   annotation SqlQuery {
+      sql : String
+   }
    annotation UpsertOperation {
         batchSize: Int?
         batchDuration: Int?
