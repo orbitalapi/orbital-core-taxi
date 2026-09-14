@@ -5,6 +5,13 @@ namespace com.orbitalhq.formats {
 
 namespace lang.taxi.xml {
 
+   // The root annotation added to an Xml object. Indicates that this should be serialized / deserailized as Xml
+   annotation Xml
+
    annotation XmlAttribute
    annotation XmlBody
+
+   annotation XmlNamespace {
+      uri: NamespaceUri inherits String
+   }
 }

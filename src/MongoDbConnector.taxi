@@ -6,18 +6,67 @@ namespace com.orbitalhq.mongo {
    annotation MongoService {
       connection : ConnectionName
    }
-   
+
    annotation UpsertOperation {
         batchSize: BatchSize?
         batchDuration: BatchDuration?
    }
+
    annotation ObjectId {}
    annotation UniqueIndex {}
    annotation SetOnInsert {}
-  
+
+   [[
+      Marks a write operation as a delete operation.
+      Supports batching with optional batchSize and batchDuration parameters.
+   ]]
+   annotation DeleteOperation {
+      batchSize: BatchSize?
+      batchDuration: BatchDuration?
+   }
+
    annotation Collection {
       connection : ConnectionName
       collection : CollectionName inherits String
+   }
+
+   [[
+      Allows for defining a native Mongo query as an aggregate pipeline
+   ]]
+   annotation CollectionAggregation {
+     pipeline: AggregationPipeline
+   }
+
+   [[ Defines a collection of aggregation pipelines, which execute
+   within a single transaction
+   ]]
+   annotation MultiAggregation {
+      pipelines: AggregationPipeline[]
+
+      [[ Indicates if the entire pipeline should be wrapped in a transaction.
+      Mongo has [specific limitations](https://www.mongodb.com/docs/manual/core/transactions-operations/) around what is possible to do within a
+      transaction, and Orbital does not verify that your pipeline does not break these.
+
+      If you define a pipeline that is invalid, an error will be thrown at runtime
+      ]]
+      transactional: Boolean = true
+   }
+
+model AggregationPipeline {
+   collection: String
+   stages: String[]   // each string = a Mongo pipeline stage, e.g. '{ $match: {...} }'
+}
+
+   [[
+      Allows for defining a native MongoDB delete operation with custom filter criteria.
+      Gives the full power of Mongo's query syntax, but steps outside of the Taxi type
+      system. Use this for scenarios, where you want more control over the delete behaviour.
+
+      For simple deletes, prefer @DeleteOperation
+   ]]
+   annotation DeleteByQuery {
+      collection: String
+      filter: String
    }
 }
    
