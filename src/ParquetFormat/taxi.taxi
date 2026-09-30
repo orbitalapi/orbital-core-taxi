@@ -1,0 +1,19 @@
+namespace com.orbitalhq.formats {
+
+   [[ Reads and writes this model as Apache Parquet, one row per instance.
+
+   Parameters control how the writer batches rows. They have no effect when reading,
+   as a Parquet file describes its own layout.
+
+    * `compression` - one of UNCOMPRESSED, SNAPPY, GZIP, ZSTD, LZ4_RAW
+    * `rowGroupSizeBytes` - the target size of a row group. The writer buffers a whole row group
+       in memory before writing it, so this is also (roughly) the memory used per open writer.
+    * `rowGroupMaxRows` - optionally caps the number of rows in a row group, regardless of size.
+   ]]
+   annotation Parquet {
+      compression : String = "SNAPPY"
+      rowGroupSizeBytes : Int = 67108864
+      rowGroupMaxRows : Int?
+   }
+
+}

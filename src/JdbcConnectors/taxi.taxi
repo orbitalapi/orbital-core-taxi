@@ -1,0 +1,42 @@
+
+namespace com.orbitalhq.jdbc {
+   type ConnectionName inherits String
+   type DeleteCount inherits Int
+   model DeleteResult {
+      deletedCount : DeleteCount
+   }
+   type AffectedRowCount inherits Int
+   model UpdateResult {
+      affectedRows : AffectedRowCount
+   }
+   annotation SqlQuery {
+      sql : String
+   }
+   annotation UpsertOperation {
+        batchSize: Int?
+        batchDuration: Int?
+   }
+   annotation InsertOperation {
+        batchSize: Int?
+        batchDuration: Int?
+   }
+   annotation UpdateOperation {
+        batchSize: Int?
+        batchDuration: Int?
+   }
+   annotation DeleteOperation {
+        batchSize: Int?
+        batchDuration: Int?
+   }
+   annotation DatabaseService {
+      connection : ConnectionName
+   }
+
+   annotation Table {
+      connection : ConnectionName
+      table : TableName inherits String
+      schema: SchemaName inherits String
+
+   }
+}
+   

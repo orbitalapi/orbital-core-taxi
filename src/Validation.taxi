@@ -1,0 +1,99 @@
+namespace com.orbitalhq.validation {
+   enum Severity {
+      Info,
+      Warning,
+      Error
+   }
+
+   enum ValidationAction {
+      Reject,
+      Warn,
+      Drop
+   }
+
+   annotation ValidationRule {
+      message : com.orbitalhq.errors.ErrorMessage?
+      severity : Severity = Severity.Error
+      error : com.orbitalhq.errors.Error?
+   }
+
+   // Activates validation (all declared rules + nullability) for a scope.
+   annotation Valid
+
+   annotation OnValidationFailure {
+      action : ValidationAction = ValidationAction.Reject
+      threshold : Severity = Severity.Error
+   }
+
+   type ViolationPath inherits String
+   type ViolationRuleName inherits String
+   type ViolationMessage inherits String
+
+   model ValidationViolation {
+      path : ViolationPath
+      rule : ViolationRuleName
+      severity : Severity
+      message : ViolationMessage
+   }
+
+   @taxi.http.ResponseBody
+   @taxi.http.ResponseCode(400)
+   model ValidationFailureReport {
+      message : com.orbitalhq.errors.ErrorMessage
+      violations : ValidationViolation[]
+   }
+}
+namespace com.orbitalhq.validation {
+   annotation NotEmpty inherits com.orbitalhq.validation.ValidationRule
+}
+namespace com.orbitalhq.validation {
+   annotation MinLength inherits com.orbitalhq.validation.ValidationRule {
+      value : Int
+   }
+}
+namespace com.orbitalhq.validation {
+   annotation MaxLength inherits com.orbitalhq.validation.ValidationRule {
+      value : Int
+   }
+}
+namespace com.orbitalhq.validation {
+   annotation Pattern inherits com.orbitalhq.validation.ValidationRule {
+      regex : String
+   }
+}
+namespace com.orbitalhq.validation {
+   annotation Min inherits com.orbitalhq.validation.ValidationRule {
+      value : Decimal
+      exclusive : Boolean = false
+   }
+}
+namespace com.orbitalhq.validation {
+   annotation Max inherits com.orbitalhq.validation.ValidationRule {
+      value : Decimal
+      exclusive : Boolean = false
+   }
+}
+namespace com.orbitalhq.validation {
+   annotation MultipleOf inherits com.orbitalhq.validation.ValidationRule {
+      value : Decimal
+   }
+}
+namespace com.orbitalhq.validation {
+   annotation MinItems inherits com.orbitalhq.validation.ValidationRule {
+      value : Int
+   }
+}
+namespace com.orbitalhq.validation {
+   annotation MaxItems inherits com.orbitalhq.validation.ValidationRule {
+      value : Int
+   }
+}
+namespace com.orbitalhq.validation {
+   annotation UniqueItems inherits com.orbitalhq.validation.ValidationRule
+}
+namespace com.orbitalhq.validation {
+   annotation Email inherits com.orbitalhq.validation.ValidationRule
+}
+namespace com.orbitalhq.validation {
+   annotation Uuid inherits com.orbitalhq.validation.ValidationRule
+}

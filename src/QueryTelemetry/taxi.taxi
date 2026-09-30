@@ -1,0 +1,23 @@
+namespace com.orbitalhq.telemetry {
+   [[ Configures per-query telemetry persistence. Any field omitted inherits
+      from the workspace's `configuration.queryPersistence` block (and ultimately
+      the server's `vyne.analytics.*` settings).
+
+      For these values to take effect, the workspace must opt in via
+      `configuration.queryPersistence.allowQueryOverride = true`. Fields locked
+      at the server level are not overridable. ]]
+   annotation QueryTelemetry {
+      [[ Maximum size in bytes of remote-call payloads to persist. ]]
+      maxPayloadSizeInBytes: Int?
+      [[ Whether to persist remote-call response bodies. ]]
+      persistRemoteCallResponses: Boolean?
+      [[ Whether to persist remote-call metadata. ]]
+      persistRemoteCallMetadata: Boolean?
+      [[ Whether to persist trace events. ]]
+      persistTraceEvents: Boolean?
+      [[ Whether to persist query result rows. ]]
+      persistResults: Boolean?
+      [[ Whether to persist query error events. ]]
+      persistErrors: Boolean?
+   }
+}

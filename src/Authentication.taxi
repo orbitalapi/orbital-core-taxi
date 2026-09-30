@@ -1,0 +1,11 @@
+namespace com.orbitalhq.authentication
+
+[[ Indicates that requests to a query do not need to be authenticated.
+
+By default, when an Orbital instance is deployed with an auth provider,
+all requests to queries published as an Http endpoint must be authenticated.
+
+This annotation relaxes this requirement, and permits anonymous access to the
+decorated query.
+]]
+annotation AllowAnonymous {}
