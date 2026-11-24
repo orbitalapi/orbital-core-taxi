@@ -32,10 +32,12 @@ namespace com.orbitalhq.jdbc {
       connection : ConnectionName
    }
 
+   type SchemaName inherits String
+
    annotation Table {
       connection : ConnectionName
       table : TableName inherits String
-      schema: SchemaName inherits String
+      schema : SchemaName?
 
    }
 }
